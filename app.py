@@ -17,7 +17,8 @@ def home():
 @app.route('/predict_api', methods=["POST"])
 def predict_api():
     data = request.json['data']
-    print(data)
+    print("Incoming data: ", data)
+    print("List of the values: ", np.array(list(data.values())))
     print(np.array(list(data.values())).reshape(1, -1))
     new_data = scaler.transform(np.array(list(data.values())).reshape(1, -1))
     output = reg_model.predict(new_data)
